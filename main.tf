@@ -18,7 +18,7 @@ resource "aws_apigatewayv2_stage" "api" {
 
 resource "aws_apigatewayv2_route" "api_all" {
   api_id    = aws_apigatewayv2_api.api.id
-  route_key = "ANY /{proxy+}"
+  route_key = "$default"
   target    = "integrations/${aws_apigatewayv2_integration.lambda_example.id}"
 
   authorization_type = var.enable_authorizer? "JWT" : "NONE"
